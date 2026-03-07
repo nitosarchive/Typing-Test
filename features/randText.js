@@ -18,11 +18,11 @@ fetch("./typing-speed-test-main/data.json")
     function elementString() {
       textString = words.text.split("");
 
-      textString.forEach((value) => {
-        fullHTML += `<span>${value}</span>`;
-
-        textBox.innerHTML = fullHTML;
+      array = textString.map((value) => {
+        return `<span>${value}</span>`;
       });
+      fullHTML = array.join("");
+      textBox.innerHTML = fullHTML;
     }
 
     function defaultSetting() {
