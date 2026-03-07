@@ -37,4 +37,11 @@ button {
 
 #text {
   display: flex;
+  max-width: 900px;
+  white-space: pre-wrap;
+  flex-wrap: wrap;
+}
+
+span {
+  font-size: 2rem;
 }

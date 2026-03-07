@@ -19,7 +19,7 @@ fetch("./typing-speed-test-main/data.json")
       textString = words.text.split("");
 
       textString.forEach((value) => {
-        fullHTML += `<span> ${value} </span>`;
+        fullHTML += `<span>${value}</span>`;
 
         textBox.innerHTML = fullHTML;
       });
@@ -40,8 +40,6 @@ fetch("./typing-speed-test-main/data.json")
       } else {
         words = hard[Math.floor(Math.random() * hard.length)];
       }
-
-      textString = words.text.split("");
 
       elementString();
     });
