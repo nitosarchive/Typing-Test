@@ -59,21 +59,21 @@ fetch("./typing-speed-test-main/data.json")
 document.getElementById("btn").addEventListener("click", difficulty);
 
 function timeStart() {
-  if (duration === "0") return;
-  setInterval(() => {
+  time = setInterval(() => {
+    if (timer.innerText === "0") return;
     duration--;
     timer.innerText = duration;
   }, 1000);
 }
 
 let currentIndex = 0;
-
+let span;
 start.addEventListener("click", () => {
   timeStart();
   start.disabled = true;
-  let span = textBox.querySelectorAll("span");
+  span = textBox.querySelectorAll("span");
 
-  span[currentIndex].classList.add("current");
+  span[0].classList.add("current");
 });
 
 const ignore = ["Shift", "Backspace", "Ctrl", "Enter", "Alt"];
