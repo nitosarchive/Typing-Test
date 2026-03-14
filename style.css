@@ -52,3 +52,8 @@ span {
 .incorrect {
   color: red;
 }
+
+.current {
+  background: hsl(240, 1%, 59%);
+  border-radius: 0.3rem;
+}
