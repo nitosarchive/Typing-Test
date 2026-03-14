@@ -5,21 +5,20 @@ const timer = document.getElementById("time");
 const start = document.getElementById("start");
 const accuracy = document.getElementById("accuracy");
 
+const wpm = document.getElementById("wpm");
+
 let duration = 60;
 
-let textString;
-let fullHTML = "";
-
 let words;
+let correct = 0;
 
-let array;
 function elementString() {
-  textString = words.text.split("");
+  let textString = words.text.split("");
 
-  array = textString.map((value) => {
+  let array = textString.map((value) => {
     return `<span>${value}</span>`;
   });
-  fullHTML = array.join("");
+  let fullHTML = array.join("");
   textBox.innerHTML = fullHTML;
 }
 
@@ -59,23 +58,33 @@ fetch("./typing-speed-test-main/data.json")
 
 document.getElementById("btn").addEventListener("click", difficulty);
 
+let timePassed = 0;
+
+let time;
+
 function timeStart() {
   time = setInterval(() => {
+    timePassed++;
     if (timer.innerText === "0") return;
     duration--;
     timer.innerText = duration;
+  }, 1000);
+
+  setInterval(() => {
+    wpm.innerText = Math.floor((correct / 5) * (60 / timePassed));
   }, 1000);
 }
 
 let currentIndex = 0;
 let incorrect = 0;
+let testStart;
 
 let span;
 start.addEventListener("click", () => {
   timeStart();
   start.disabled = true;
   span = textBox.querySelectorAll("span");
-
+  testStart = true;
   span[currentIndex].classList.add("current");
 });
 
@@ -91,10 +100,12 @@ const ignore = [
 
 document.addEventListener("keyup", (e) => {
   if (ignore.includes(e.key)) return;
-  current = document.querySelector(".current");
 
+  current = document.querySelector(".current");
+  if (testStart != true) return;
   if (e.key === current.innerText) {
     current.classList.add("correct");
+    correct++;
   } else {
     current.classList.add("incorrect");
     incorrect++;
