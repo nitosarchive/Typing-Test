@@ -36,9 +36,7 @@
 body {
   background: rgb(20, 20, 20);
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+
   flex-direction: column;
   position: relative;
   font-family: "Sora";

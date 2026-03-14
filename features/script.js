@@ -18,6 +18,7 @@ function elementString() {
   let array = textString.map((value) => {
     return `<span>${value}</span>`;
   });
+
   let fullHTML = array.join("");
   textBox.innerHTML = fullHTML;
 }
@@ -118,4 +119,9 @@ document.addEventListener("keyup", (e) => {
 
   currentIndex++;
   span[currentIndex].classList.add("current");
+
+  if (currentIndex === span.length - 1) {
+    clearInterval(time);
+    testStart = false;
+  }
 });
