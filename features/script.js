@@ -3,6 +3,7 @@ const textBox = document.getElementById("text");
 const timer = document.getElementById("time");
 
 const start = document.getElementById("start");
+const accuracy = document.getElementById("accuracy");
 
 let duration = 60;
 
@@ -67,6 +68,8 @@ function timeStart() {
 }
 
 let currentIndex = 0;
+let incorrect = 0;
+
 let span;
 start.addEventListener("click", () => {
   timeStart();
@@ -76,19 +79,32 @@ start.addEventListener("click", () => {
   span[currentIndex].classList.add("current");
 });
 
-const ignore = ["Shift", "Backspace", "Ctrl", "Enter", "Alt"];
+const ignore = [
+  "Shift",
+  "Backspace",
+  "Ctrl",
+  "Enter",
+  "Alt",
+  "CapsLock",
+  "Tab",
+];
 
 document.addEventListener("keyup", (e) => {
   if (ignore.includes(e.key)) return;
   current = document.querySelector(".current");
-  currentIndex++;
 
   if (e.key === current.innerText) {
     current.classList.add("correct");
   } else {
     current.classList.add("incorrect");
+    incorrect++;
   }
   current.classList.remove("current");
 
+  accuracy.innerText = Math.floor(
+    ((span.length - incorrect) / span.length) * 100,
+  );
+
+  currentIndex++;
   span[currentIndex].classList.add("current");
 });
