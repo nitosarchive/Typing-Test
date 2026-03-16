@@ -6,7 +6,8 @@ const wpm = document.getElementById("wpm");
 let duration = 60;
 let words;
 let correct = 0;
-
+let testStart = false;
+const btn = document.querySelectorAll("button");
 function elementString() {
   let textString = words.text.split("");
 
@@ -73,15 +74,18 @@ function timeStart() {
 
 let currentIndex = 0;
 let incorrect = 0;
-let testStart = false;
 
 let span;
 start.addEventListener("click", () => {
   timeStart();
-  start.disabled = true;
+  btn.forEach((btn) => {
+    btn.disabled = true;
+  });
+
   span = textBox.querySelectorAll("span");
   testStart = true;
   span[currentIndex].classList.add("current");
+  textBox.classList.remove("not-started");
 });
 
 const ignore = [
@@ -94,11 +98,13 @@ const ignore = [
   "Tab",
 ];
 
-document.addEventListener("keypress", (e) => {
+document.addEventListener("keyup", (e) => {
   if (ignore.includes(e.key)) return;
 
   current = document.querySelector(".current");
+
   if (testStart != true) return;
+
   if (e.key === current.innerText) {
     current.classList.add("correct");
     correct++;
@@ -112,13 +118,13 @@ document.addEventListener("keypress", (e) => {
     ((span.length - incorrect) / span.length) * 100,
   );
 
-  console.log(span);
-
   if (currentIndex >= span.length - 1) {
     clearInterval(time);
     testStart = false;
   }
 
   currentIndex++;
+
+  if (testStart != true) return;
   span[currentIndex].classList.add("current");
 });
