@@ -9,6 +9,7 @@ let correct = 0;
 let testStart = false;
 const btn = document.querySelectorAll("button");
 let span;
+const select = document.querySelectorAll("select");
 
 function elementString() {
   let textString = words.text.split("");
@@ -41,7 +42,7 @@ function defaultSetting() {
   elementString();
 }
 
-function difficulty(e) {
+function getDifficulty(e) {
   if (e.target.value === "easy") {
     words = easy[Math.floor(Math.random() * easy.length)];
   } else if (e.target.value === "medium") {
@@ -53,9 +54,7 @@ function difficulty(e) {
   elementString();
 }
 
-document
-  .getElementById("option-container")
-  .addEventListener("change", difficulty);
+document.getElementById("difficulty").addEventListener("change", getDifficulty);
 
 let timePassed = 0;
 
@@ -81,6 +80,10 @@ start.addEventListener("click", () => {
   timeStart();
   btn.forEach((btn) => {
     btn.disabled = true;
+  });
+
+  select.forEach((select) => {
+    select.disabled = true;
   });
 
   span = textBox.querySelectorAll("span");

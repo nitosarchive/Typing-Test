@@ -8,15 +8,33 @@
     <title>Typing Test</title>
   </head>
   <body>
-    <label for="difficulty"></label>
-    <select title="difficulty" id="option-container">
-      <option value="easy">Easy</option>
-      <option value="medium">Medium</option>
-      <option value="hard">Hard</option>
-    </select>
+    <header>
+      <img src="./typing-speed-test-main/assets/images/logo-small.svg" alt="" />
 
-    <span id="time"></span>
+      <div>
+        <img
+          src="./typing-speed-test-main/assets/images/icon-personal-best.svg"
+          alt=""
+        />
+        <span>Best:</span>
+        <span>92 WPM</span>
+      </div>
+    </header>
+    <nav>
+      <div class="container-1">
+        <span id="accuracy"></span>
+        <span id="wpm"></span>
+        <span id="time"></span>
+      </div>
 
+      <select title="difficulty" id="difficulty">
+        <option value="easy">Easy</option>
+        <option value="medium">Medium</option>
+        <option value="hard">Hard</option>
+      </select>
+
+      <select title="format" id="format"></select>
+    </nav>
     <main>
       <div class="overlay">
         <button id="start">start typing test</button>
@@ -25,8 +43,5 @@
 
       <div id="text" class="not-started"></div>
     </main>
-
-    <span id="accuracy"></span>
-    <span id="wpm"></span>
   </body>
 </html>
