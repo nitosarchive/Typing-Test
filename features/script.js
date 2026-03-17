@@ -66,6 +66,7 @@ function getWpm() {
 }
 
 let time;
+let seconds;
 
 function timeMode() {
   incrementedTime = 60;
@@ -73,7 +74,9 @@ function timeMode() {
     timePassed++;
     if (timer.innerText === "0") return;
     incrementedTime--;
-    timer.innerText = incrementedTime;
+    seconds = String(incrementedTime).padStart(2, "0");
+
+    timer.innerText = `00:00:${seconds}`;
   }, 1000);
 }
 
@@ -82,7 +85,21 @@ function passage() {
   time = setInterval(() => {
     incrementedTime++;
     timePassed++;
-    timer.innerText = incrementedTime;
+    let minutes = Math.floor(incrementedTime / 60);
+
+    let hour = Math.floor(incrementedTime / 3600);
+
+    let second = incrementedTime % 60;
+
+    let minute = minutes % 60;
+
+    second = String(second).padStart(2, "0");
+
+    minute = String(minute).padStart(2, "0");
+
+    hour = String(hour).padStart(2, "0");
+
+    timer.innerText = `${hour}:${minute}:${second}`;
   }, 1000);
 }
 
