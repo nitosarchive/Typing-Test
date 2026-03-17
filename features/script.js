@@ -11,6 +11,7 @@ const btn = document.querySelectorAll("button");
 let span;
 const select = document.querySelectorAll("select");
 const format = document.getElementById("format");
+const restart = document.getElementById("restart");
 
 function elementString() {
   let textString = words.text.split("");
@@ -107,15 +108,12 @@ let currentIndex = 0;
 let incorrect = 0;
 
 start.addEventListener("click", () => {
+  restart.classList.remove("hidden");
   if (format.value === "60s") {
     timeMode();
   } else passage();
 
   getWpm();
-
-  btn.forEach((btn) => {
-    btn.disabled = true;
-  });
 
   select.forEach((select) => {
     select.disabled = true;
@@ -125,7 +123,7 @@ start.addEventListener("click", () => {
   testStart = true;
   span[currentIndex].classList.add("current");
   textBox.classList.remove("not-started");
-  document.querySelector(".overlay").style.display = "none";
+  document.querySelector(".overlay").classList.add("hidden");
 });
 
 const ignore = [
@@ -163,5 +161,30 @@ document.addEventListener("keyup", (e) => {
     return;
   }
   currentIndex++;
+  span[currentIndex].classList.add("current");
+});
+
+restart.addEventListener("click", () => {
+  if (format.value === "60s") {
+    incrementedTime = 60;
+  } else incrementedTime = 0;
+
+  incorrect = 0;
+  correct = 0;
+
+  accuracy.innerText = "100%";
+
+  currentIndex = 0;
+
+  span.forEach((span) => {
+    span.removeAttribute("class");
+  });
+
+  getWpm();
+
+  select.forEach((select) => {
+    select.disabled = true;
+  });
+
   span[currentIndex].classList.add("current");
 });

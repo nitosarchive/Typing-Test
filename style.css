@@ -143,12 +143,23 @@ main {
   }
 }
 
+select {
+  background: black;
+}
+
+button {
+  background: hsl(0, 0%, 15%);
+  font: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
 @media screen and (min-width: 750px) {
   #text {
     width: 60%;
   }
-}
-
-select {
-  background: black;
 }
