@@ -176,7 +176,6 @@ document.addEventListener("keyup", (e) => {
 
   if (currentIndex >= span.length - 1) {
     testStart = false;
-    clearInterval(time);
     test.classList.add("hidden");
     saveWpm = Math.floor((correct / 5) * (60 / timePassed));
     wpmResult.innerText = saveWpm;
