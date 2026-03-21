@@ -8,23 +8,54 @@
     <title>Typing Test</title>
   </head>
   <body>
-    <div class="test">
-      <div class="head">
+    <div class="head">
+      <img
+        class="logo"
+        src="./typing-speed-test-main/assets/images/logo-small.svg"
+        alt=""
+      />
+      <div class="score">
         <img
-          class="logo"
-          src="./typing-speed-test-main/assets/images/logo-small.svg"
+          src="./typing-speed-test-main/assets/images/icon-personal-best.svg"
           alt=""
         />
-        <div>
-          <img
-            src="./typing-speed-test-main/assets/images/icon-personal-best.svg"
-            alt=""
-          />
-          <span>Best:</span>
-          <span>92 WPM</span>
+        <span>Best:</span>
+        <span>(No test taken)</span>
+      </div>
+    </div>
+
+    <div class="result hidden">
+      <img
+        src="./typing-speed-test-main/assets/images/icon-completed.svg"
+        alt=""
+      />
+
+      <h3>Baseline Established!</h3>
+      <p>You've set the bar. Now the real challenge beginstime to beat it.</p>
+
+      <div class="stat-result">
+        <div class="wrapper">
+          <span>WPM:</span>
+          <span id="wpm-result">85</span>
+        </div>
+
+        <div class="wrapper">
+          <span>Accuracy:</span>
+          <span id="accuracy-result">90%</span>
+        </div>
+
+        <div class="wrapper">
+          <span>Characters</span>
+          <div class="characters">
+            <span id="correct">120</span>
+            <span>/</span>
+            <span id="incorrect">5</span>
+          </div>
         </div>
       </div>
+    </div>
 
+    <div class="test">
       <div class="stats-container">
         <div class="wpm-wrapper">
           <span>WPM:</span>
@@ -42,20 +73,15 @@
           <span id="time">0:00</span>
         </div>
       </div>
+
       <div class="option-container">
         <select title="difficulty" id="difficulty">
-          <button>
-            <selectedcontent></selectedcontent>
-          </button>
           <option value="easy"><span></span>Easy</option>
           <option value="medium"><span></span>Medium</option>
           <option value="hard"><span></span>Hard</option>
         </select>
 
         <select title="format" id="format">
-          <button>
-            <selectedcontent></selectedcontent>
-          </button>
           <option value="60s"><span></span>Timed(60)</option>
           <option value="passage"><span></span>Passage</option>
         </select>
@@ -79,7 +105,5 @@
         />
       </button>
     </footer>
-
-    <div class="hidden"></div>
   </body>
 </html>

@@ -188,12 +188,12 @@ option:checked span::before {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 2;
-  white-space: nowrap;
 }
 
 .overlay span {
   font-size: 1em;
   display: block;
+  margin-block-start: 0.3em;
 }
 
 #start {
@@ -208,6 +208,10 @@ option:checked span::before {
   border-radius: 10px;
 }
 
+#start:hover {
+  background: hsl(210, 100%, 65%);
+}
+
 #time {
   color: hsl(49, 85%, 70%);
 }
@@ -217,10 +221,10 @@ main {
 
 #text {
   display: flex;
-
-  width: 90%;
-  white-space: pre-wrap;
+  display: flex;
   flex-wrap: wrap;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 #text.not-started {
@@ -230,6 +234,8 @@ main {
 #text span {
   font-size: 2rem;
   color: hsl(240, 3%, 46%);
+
+  white-space: pre-wrap;
 }
 
 #text span.correct {
@@ -268,16 +274,21 @@ button {
 
 footer {
   margin-block-start: 1em;
-  #restart {
-    border-radius: 0.4em;
-    padding-inline: 1em;
-    padding-block: 0.8em;
-    font-size: 1.1rem;
-    font-weight: 600;
-    display: flex;
-    gap: 0.7em;
-    align-items: center;
-  }
+}
+
+#restart.hidden {
+  display: none;
+}
+
+#restart {
+  border-radius: 0.4em;
+  padding-inline: 1em;
+  padding-block: 0.8em;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  gap: 0.7em;
+  align-items: center;
 }
 
 main {
@@ -287,5 +298,29 @@ main {
   padding-block: 1em;
 }
 
+.result {
+  text-align: center;
+}
+
+.result .wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-block-end: 2em;
+  border-radius: 0.3em;
+  border: 1px solid;
+}
+
+.result img {
+  transition: rotate 2s ease;
+  border: none;
+  box-shadow:
+    0 0 0 7px hsla(140, 63%, 57%, 0.212),
+    0 0 0 14px hsla(140, 63%, 57%, 0.13);
+  border-radius: 50%;
+}
+
 @media screen and (min-width: 750px) {
+  .test {
+    width: 60%;
+  }
 }

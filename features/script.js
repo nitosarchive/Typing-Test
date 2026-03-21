@@ -13,6 +13,8 @@ const select = document.querySelectorAll("select");
 const format = document.getElementById("format");
 const restart = document.getElementById("restart");
 const test = document.querySelector(".test");
+const result = document.querySelector(".result");
+const wpmResult = document.querySelector("#wpm-result");
 
 window.addEventListener("keydown", function (e) {
   if (e.key === " ") {
@@ -75,18 +77,20 @@ function getWpm() {
   }, 1000);
 }
 
-let time;
+let timeOne;
+let timeTwo;
 let seconds;
 
 function timeMode() {
   incrementedTime = 60;
-  time = setInterval(() => {
-    timePassed++;
+  timeOne = setInterval(() => {
     if (incrementedTime === 0) {
-      clearInterval(time);
+      clearInterval(timeOne);
       test.classList.add("hidden");
       return;
     }
+
+    timePassed++;
 
     incrementedTime--;
     seconds = String(incrementedTime).padStart(2, "0");
@@ -97,7 +101,7 @@ function timeMode() {
 
 function passage() {
   incrementedTime = 0;
-  time = setInterval(() => {
+  timeTwo = setInterval(() => {
     incrementedTime++;
     timePassed++;
     let minutes = Math.floor(incrementedTime / 60);
@@ -136,6 +140,8 @@ function takeTest() {
   document.querySelector(".overlay").classList.add("hidden");
 }
 
+let saveWpm = 0;
+
 start.addEventListener("click", takeTest);
 textBox.addEventListener("click", takeTest);
 
@@ -169,11 +175,12 @@ document.addEventListener("keyup", (e) => {
     Math.floor(((span.length - incorrect) / span.length) * 100) + "%";
 
   if (currentIndex >= span.length - 1) {
-    clearInterval(time);
     testStart = false;
+    clearInterval(time);
     test.classList.add("hidden");
-
-    restart.innerText = "Take test again";
+    saveWpm = Math.floor((correct / 5) * (60 / timePassed));
+    wpmResult.innerText = saveWpm;
+    result.classList.remove("hidden");
     return;
   }
 
@@ -187,17 +194,18 @@ document.addEventListener("keyup", (e) => {
 
 restart.addEventListener("mousedown", (e) => {
   e.preventDefault();
+  timePassed = 0;
 
   test.classList.remove("hidden");
+  result.classList.add("hidden");
+
   if (format.value === "60s") {
-    {
-      clearInterval(time);
-      incrementedTime = 60;
-      timeMode();
-      timer.innerText = "0:60";
-    }
+    clearInterval(timeOne);
+    incrementedTime = 60;
+    timeMode();
+    timer.innerText = "0:60";
   } else {
-    clearInterval(time);
+    clearInterval(timeTwo);
     passage();
     incrementedTime = 0;
     timer.innerText = "0:00";
