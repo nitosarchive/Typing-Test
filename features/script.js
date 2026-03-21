@@ -116,7 +116,7 @@ function passage() {
 let currentIndex = 0;
 let incorrect = 0;
 
-start.addEventListener("click", () => {
+function takeTest() {
   restart.classList.remove("hidden");
   if (format.value === "60s") {
     timeMode();
@@ -133,7 +133,10 @@ start.addEventListener("click", () => {
   span[currentIndex].classList.add("current");
   textBox.classList.remove("not-started");
   document.querySelector(".overlay").classList.add("hidden");
-});
+}
+
+start.addEventListener("click", takeTest);
+textBox.addEventListener("click", takeTest);
 
 const ignore = [
   "Shift",
@@ -168,6 +171,8 @@ document.addEventListener("keyup", (e) => {
     clearInterval(time);
     testStart = false;
     test.classList.add("hidden");
+
+    restart.innerText = "Take test again";
     return;
   }
 
@@ -183,7 +188,10 @@ restart.addEventListener("mousedown", (e) => {
   e.preventDefault();
   test.classList.remove("hidden");
   if (format.value === "60s") {
-    incrementedTime = 60;
+    {
+      incrementedTime = 60;
+      timeMode();
+    }
   } else incrementedTime = 0;
 
   incorrect = 0;
