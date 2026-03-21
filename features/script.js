@@ -89,7 +89,6 @@ function timeMode() {
   if (time) clearInterval(time);
   time = setInterval(() => {
     if (incrementedTime === 0) {
-      clearInterval(timeOne);
       test.classList.add("hidden");
       return;
     }
@@ -167,7 +166,7 @@ document.addEventListener("keyup", (e) => {
 
   current = document.querySelector(".current");
 
-  if (testStart != true) return;
+  if (testStart === false) return;
 
   if (e.key === current.innerText) {
     current.classList.add("correct");
@@ -208,14 +207,18 @@ document.addEventListener("keyup", (e) => {
 
 restart.addEventListener("mousedown", (e) => {
   e.preventDefault();
+  testStart = true;
   timePassed = 0;
 
+  if (currentIndex >= span.length - 1) {
+    result.classList.add("hidden");
+  }
   test.classList.remove("hidden");
-  result.classList.add("hidden");
 
   if (format.value === "60s") {
     incrementedTime = 60;
     timeMode();
+
     timer.innerText = "0:60";
   } else {
     passage();
@@ -233,8 +236,6 @@ restart.addEventListener("mousedown", (e) => {
   span.forEach((span) => {
     span.removeAttribute("class");
   });
-
-  getWpm();
 
   select.forEach((select) => {
     select.disabled = true;
