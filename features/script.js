@@ -83,6 +83,7 @@ function timeMode() {
   time = setInterval(() => {
     timePassed++;
     if (incrementedTime === 0) {
+      clearInterval(time);
       test.classList.add("hidden");
       return;
     }
@@ -189,6 +190,7 @@ restart.addEventListener("mousedown", (e) => {
   test.classList.remove("hidden");
   if (format.value === "60s") {
     {
+      clearInterval(time);
       incrementedTime = 60;
       timeMode();
     }

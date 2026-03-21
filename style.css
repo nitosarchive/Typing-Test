@@ -230,6 +230,7 @@ main {
 
 #text span {
   font-size: 2rem;
+  color: hsl(240, 3%, 46%);
 }
 
 .correct {
