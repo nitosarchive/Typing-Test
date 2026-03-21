@@ -307,16 +307,50 @@ main {
   flex-direction: column;
   margin-block-end: 2em;
   border-radius: 0.3em;
-  border: 1px solid;
+  padding-inline-start: 1em;
+  padding-block: 0.4em;
+  font-size: 1.3rem;
+  border: 1px solid hsl(240, 3%, 46%);
 }
 
 .result img {
-  transition: rotate 2s ease;
   border: none;
-  box-shadow:
-    0 0 0 7px hsla(140, 63%, 57%, 0.212),
-    0 0 0 14px hsla(140, 63%, 57%, 0.13);
+  max-width: 3rem;
+  margin-block: 2em;
+  animation: shadow-expand 2s;
   border-radius: 50%;
+}
+
+.result img.active {
+  animation: box-appear 2s ease forwards;
+}
+
+@keyframes box-appear {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow:
+      0 0 0 7px hsla(140, 63%, 57%, 0.212),
+      0 0 0 14px hsla(140, 63%, 57%, 0.13);
+  }
+}
+.stat-result {
+  text-align: left;
+}
+
+#wpm-result {
+  font-weight: 700;
+}
+
+#correct {
+  color: hsl(140, 63%, 57%);
+  font-weight: 700;
+}
+#incorrect,
+#accuracy-result {
+  color: hsl(354, 63%, 57%);
+  font-weight: 700;
 }
 
 @media screen and (min-width: 750px) {

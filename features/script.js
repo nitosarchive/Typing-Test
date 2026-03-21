@@ -15,6 +15,9 @@ const restart = document.getElementById("restart");
 const test = document.querySelector(".test");
 const result = document.querySelector(".result");
 const wpmResult = document.querySelector("#wpm-result");
+const correctResult = document.getElementById("correct");
+const incorrectResult = document.getElementById("incorrect");
+const accuracyResult = document.getElementById("accuracy-result");
 
 window.addEventListener("keydown", function (e) {
   if (e.key === " ") {
@@ -77,13 +80,14 @@ function getWpm() {
   }, 1000);
 }
 
-let timeOne;
-let timeTwo;
+let time;
 let seconds;
 
 function timeMode() {
   incrementedTime = 60;
-  timeOne = setInterval(() => {
+
+  if (time) clearInterval(time);
+  time = setInterval(() => {
     if (incrementedTime === 0) {
       clearInterval(timeOne);
       test.classList.add("hidden");
@@ -100,8 +104,10 @@ function timeMode() {
 }
 
 function passage() {
+  if (time) clearInterval(time);
   incrementedTime = 0;
-  timeTwo = setInterval(() => {
+
+  time = setInterval(() => {
     incrementedTime++;
     timePassed++;
     let minutes = Math.floor(incrementedTime / 60);
@@ -140,7 +146,8 @@ function takeTest() {
   document.querySelector(".overlay").classList.add("hidden");
 }
 
-let saveWpm = 0;
+let saveWpm;
+let saveAccuracy;
 
 start.addEventListener("click", takeTest);
 textBox.addEventListener("click", takeTest);
@@ -178,8 +185,16 @@ document.addEventListener("keyup", (e) => {
     testStart = false;
     test.classList.add("hidden");
     saveWpm = Math.floor((correct / 5) * (60 / timePassed));
+    saveAccuracy =
+      Math.floor(((span.length - incorrect) / span.length) * 100) + "%";
     wpmResult.innerText = saveWpm;
     result.classList.remove("hidden");
+    correctResult.innerText = correct;
+    document.querySelector(".base-img").classList.add("active");
+    incorrectResult.innerText = incorrect;
+
+    accuracyResult.innerText = saveAccuracy;
+    Math.floor(((span.length - incorrect) / span.length) * 100) + "%";
     return;
   }
 
@@ -199,12 +214,10 @@ restart.addEventListener("mousedown", (e) => {
   result.classList.add("hidden");
 
   if (format.value === "60s") {
-    clearInterval(timeOne);
     incrementedTime = 60;
     timeMode();
     timer.innerText = "0:60";
   } else {
-    clearInterval(timeTwo);
     passage();
     incrementedTime = 0;
     timer.innerText = "0:00";
