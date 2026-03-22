@@ -201,6 +201,7 @@ document.addEventListener("keyup", (e) => {
     base.classList.remove("hidden");
 
     if (saveWpm <= best) {
+      document.querySelector(".base-img").classList.remove("hidden");
       document.querySelector(".highscore").classList.add("hidden");
       document.querySelector(".confetti-wrapper").classList.add("hidden");
       restart.firstChild.nodeValue = "Go again";
