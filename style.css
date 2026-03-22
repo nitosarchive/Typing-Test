@@ -57,6 +57,10 @@ body {
   gap: 0.2em;
 }
 
+.logo-desktop {
+  display: none;
+}
+
 .stats-container {
   display: flex;
   justify-content: space-between;
@@ -326,10 +330,10 @@ main {
   margin-block: 2em;
   animation: shadow-expand 2s;
   border-radius: 50%;
-  animation: box-appear 2s ease forwards;
+  animation: circle-appear 2s ease forwards;
 }
 
-@keyframes box-appear {
+@keyframes circle-appear {
   from {
     box-shadow: none;
   }
@@ -377,7 +381,15 @@ h3 {
     width: 60%;
   }
 
-  @keyframes box-appear {
+  .logo-desktop {
+    display: block;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  @keyframes circle-appear {
     from {
       box-shadow: none;
     }
