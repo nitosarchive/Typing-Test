@@ -8,121 +8,124 @@
     <title>Typing Test</title>
   </head>
   <body>
-    <div class="head">
-      <img
-        class="logo"
-        src="./typing-speed-test-main/assets/images/logo-small.svg"
-        alt=""
-      />
-
-      <img
-        src="./typing-speed-test-main/assets/images/logo-large.svg"
-        alt=""
-        class="logo-desktop"
-      />
-      <div class="score">
+    <div class="container">
+      <div class="head">
         <img
-          src="./typing-speed-test-main/assets/images/icon-personal-best.svg"
-          alt=""
-        />
-        <span>Best:</span>
-        <span id="best-score">(No test taken)</span>
-      </div>
-    </div>
-
-    <div class="result hidden">
-      <div class="base hidden">
-        <img
-          class="base-img"
-          src="./typing-speed-test-main/assets/images/icon-completed.svg"
-          alt=""
-        />
-        <img
-          class="highscore hidden"
-          src="./typing-speed-test-main/assets/images/icon-new-pb.svg"
+          class="logo"
+          src="./typing-speed-test-main/assets/images/logo-small.svg"
           alt=""
         />
 
-        <h3></h3>
-        <p></p>
+        <img
+          src="./typing-speed-test-main/assets/images/logo-large.svg"
+          alt=""
+          class="logo-desktop"
+        />
+        <div class="score">
+          <img
+            src="./typing-speed-test-main/assets/images/icon-personal-best.svg"
+            alt=""
+          />
+          <span>Best:</span>
+          <span id="best-score">(No test taken)</span>
+        </div>
       </div>
 
-      <div class="stat-result">
-        <div class="wrapper">
-          <span>WPM:</span>
-          <span id="wpm-result">85</span>
+      <div class="result hidden">
+        <div class="base hidden">
+          <img
+            class="base-img"
+            src="./typing-speed-test-main/assets/images/icon-completed.svg"
+            alt=""
+          />
+          <img
+            class="highscore hidden"
+            src="./typing-speed-test-main/assets/images/icon-new-pb.svg"
+            alt=""
+          />
+
+          <h3></h3>
+          <p></p>
         </div>
 
-        <div class="wrapper">
-          <span>Accuracy:</span>
-          <span id="accuracy-result">90%</span>
-        </div>
+        <div class="stat-result">
+          <div class="wrapper">
+            <span>WPM:</span>
+            <span id="wpm-result">85</span>
+          </div>
 
-        <div class="wrapper">
-          <span>Characters</span>
-          <div class="characters">
-            <span id="correct">120</span>
-            <span>/</span>
-            <span id="incorrect">5</span>
+          <div class="wrapper">
+            <span>Accuracy:</span>
+            <span id="accuracy-result">90%</span>
+          </div>
+
+          <div class="wrapper">
+            <span>Characters</span>
+            <div class="characters">
+              <span id="correct">120</span>
+              <span>/</span>
+              <span id="incorrect">5</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="test">
-      <div class="stats-container">
-        <div class="wpm-wrapper">
-          <span>WPM:</span>
-          <span id="wpm">0</span>
-        </div>
-        <div class="gap"></div>
-        <div class="accuracy-wrapper">
-          <span>Accuracy:</span>
+      <div class="test">
+        <div class="stats-container">
+          <div class="wpm-wrapper">
+            <span>WPM:</span>
+            <span id="wpm">0</span>
+          </div>
+          <div class="gap"></div>
+          <div class="accuracy-wrapper">
+            <span>Accuracy:</span>
 
-          <span id="accuracy">100%</span>
+            <span id="accuracy">100%</span>
+          </div>
+          <div class="gap"></div>
+          <div class="time-wrapper">
+            <span>Time:</span>
+            <span id="time">0:00</span>
+          </div>
         </div>
-        <div class="gap"></div>
-        <div class="time-wrapper">
-          <span>Time:</span>
-          <span id="time">0:00</span>
+
+        <div class="option-container">
+          <select title="difficulty" id="difficulty">
+            <option value="easy"><span></span>Easy</option>
+            <option value="medium"><span></span>Medium</option>
+            <option value="hard"><span></span>Hard</option>
+          </select>
+
+          <select title="format" id="format">
+            <option value="60s"><span></span>Timed(60)</option>
+            <option value="passage"><span></span>Passage</option>
+          </select>
         </div>
+        <main>
+          <div class="overlay">
+            <button id="start">start typing test</button>
+            <span>Or click the text and start typing</span>
+          </div>
+
+          <div id="text" class="not-started"></div>
+        </main>
       </div>
 
-      <div class="option-container">
-        <select title="difficulty" id="difficulty">
-          <option value="easy"><span></span>Easy</option>
-          <option value="medium"><span></span>Medium</option>
-          <option value="hard"><span></span>Hard</option>
-        </select>
-
-        <select title="format" id="format">
-          <option value="60s"><span></span>Timed(60)</option>
-          <option value="passage"><span></span>Passage</option>
-        </select>
-      </div>
-      <main>
-        <div class="overlay">
-          <button id="start">start typing test</button>
-          <span>Or click the text and start typing</span>
-        </div>
-
-        <div id="text" class="not-started"></div>
-      </main>
+      <footer>
+        <button id="restart" class="hidden">
+          Restart Test
+          <img
+            src="./typing-speed-test-main/assets/images/icon-restart.svg"
+            alt=""
+          />
+        </button>
+      </footer>
     </div>
-
-    <footer>
-      <button id="restart" class="hidden">
-        Restart Test
-        <img
-          src="./typing-speed-test-main/assets/images/icon-restart.svg"
-          alt=""
-        />
-      </button>
-    </footer>
-    <img
-      class="confetti"
-      src="./typing-speed-test-main/assets/images/pattern-confetti.svg"
-      alt=""
-    />
+    <div class="confetti-wrapper hidden">
+      <img
+        src="./typing-speed-test-main/assets/images/pattern-confetti.svg"
+        alt=""
+      />
+    </div>
   </body>
 </html>
