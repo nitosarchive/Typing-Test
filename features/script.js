@@ -18,11 +18,15 @@ const wpmResult = document.querySelector("#wpm-result");
 const correctResult = document.getElementById("correct");
 const incorrectResult = document.getElementById("incorrect");
 const accuracyResult = document.getElementById("accuracy-result");
-let best = 0;
+let best = localStorage.getItem("bestScore");
 const base = document.querySelector(".base");
 const bestScore = document.getElementById("best-score");
 const messageTitle = base.querySelector("h3");
 const message = base.querySelector("p");
+
+if (best != null) {
+  bestScore.innerText = best + " WPM";
+}
 
 window.addEventListener("keydown", function (e) {
   if (e.key === " ") {
@@ -207,24 +211,28 @@ document.addEventListener("keyup", (e) => {
       restart.firstChild.nodeValue = "Go again";
       messageTitle.innerText = "Test Complete!";
       message.innerText = "Solid run. Keep pushing to beat your high score.";
+      return;
     }
 
-    if (best === 0) {
-      best = saveWpm;
+    if (best === null) {
       restart.firstChild.nodeValue = "Beat this Score";
       document.querySelector(".highscore").classList.add("hidden");
       messageTitle.innerText = "Baseline Established!";
       message.innerText =
         "You've set the bar. Now the real challenge begins—time to beat it.";
-
-      bestScore.innerText = best;
+      localStorage.setItem("bestScore", saveWpm);
+      best = localStorage.getItem("bestScore");
+      bestScore.innerText = best + " WPM";
+      return;
     }
 
     if (saveWpm > best) {
-      best = saveWpm;
+      localStorage.setItem("bestScore", saveWpm);
+      best = localStorage.getItem("bestScore");
+      bestScore.innerText = best + " WPM";
       restart.firstChild.nodeValue = "Go again";
       document.querySelector(".base-img").classList.remove("hidden");
-      bestScore.innerText = best;
+      bestScore.innerText = best + " WPM";
       document.querySelector(".base-img").classList.add("hidden");
       document.querySelector(".highscore").classList.remove("hidden");
       document.querySelector(".confetti-wrapper").classList.remove("hidden");
