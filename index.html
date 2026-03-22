@@ -5,24 +5,110 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script defer src="features/script.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>Typing Test</title>
   </head>
   <body>
-    <button id="start">Start test</button>
-    <nav class="select">
-      <div id="btn">
-        Difficulty: <button id="easy">Easy</button>
-        <button id="medium">Medium</button>
-        <button id="hard">Hard</button>
+    <div class="head">
+      <img
+        class="logo"
+        src="./typing-speed-test-main/assets/images/logo-small.svg"
+        alt=""
+      />
+      <div class="score">
+        <img
+          src="./typing-speed-test-main/assets/images/icon-personal-best.svg"
+          alt=""
+        />
+        <span>Best:</span>
+        <span id="best-score">(No test taken)</span>
+      </div>
+    </div>
+
+    <div class="result hidden">
+      <div class="base hidden">
+        <img
+          class="base-img"
+          src="./typing-speed-test-main/assets/images/icon-completed.svg"
+          alt=""
+        />
+
+        <h3>Baseline Established!</h3>
+        <p>
+          You've set the bar. Now the real challenge begins—time to beat it.
+        </p>
       </div>
 
-      <span id="time"></span>
-    </nav>
-    <main>
-      <div id="text"></div>
-    </main>
+      <div class="stat-result">
+        <div class="wrapper">
+          <span>WPM:</span>
+          <span id="wpm-result">85</span>
+        </div>
 
-    <span id="accuracy"></span>
-    <span id="wpm"></span>
+        <div class="wrapper">
+          <span>Accuracy:</span>
+          <span id="accuracy-result">90%</span>
+        </div>
+
+        <div class="wrapper">
+          <span>Characters</span>
+          <div class="characters">
+            <span id="correct">120</span>
+            <span>/</span>
+            <span id="incorrect">5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test">
+      <div class="stats-container">
+        <div class="wpm-wrapper">
+          <span>WPM:</span>
+          <span id="wpm">0</span>
+        </div>
+        <div class="gap"></div>
+        <div class="accuracy-wrapper">
+          <span>Accuracy:</span>
+
+          <span id="accuracy">100%</span>
+        </div>
+        <div class="gap"></div>
+        <div class="time-wrapper">
+          <span>Time:</span>
+          <span id="time">0:00</span>
+        </div>
+      </div>
+
+      <div class="option-container">
+        <select title="difficulty" id="difficulty">
+          <option value="easy"><span></span>Easy</option>
+          <option value="medium"><span></span>Medium</option>
+          <option value="hard"><span></span>Hard</option>
+        </select>
+
+        <select title="format" id="format">
+          <option value="60s"><span></span>Timed(60)</option>
+          <option value="passage"><span></span>Passage</option>
+        </select>
+      </div>
+      <main>
+        <div class="overlay">
+          <button id="start">start typing test</button>
+          <span>Or click the text and start typing</span>
+        </div>
+
+        <div id="text" class="not-started"></div>
+      </main>
+    </div>
+
+    <footer>
+      <button id="restart" class="hidden">
+        Restart Test
+        <img
+          src="./typing-speed-test-main/assets/images/icon-restart.svg"
+          alt=""
+        />
+      </button>
+    </footer>
   </body>
 </html>
