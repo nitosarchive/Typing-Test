@@ -40,6 +40,8 @@ body {
   flex-direction: column;
   font-family: "Sora", sans-serif;
   padding: 1em;
+  position: relative;
+  min-height: 100vh;
 }
 
 .head {
@@ -318,15 +320,12 @@ main {
   color: hsl(240, 1%, 59%);
 }
 
-.result img {
+.base-img {
   border: none;
   max-width: 3rem;
   margin-block: 2em;
   animation: shadow-expand 2s;
   border-radius: 50%;
-}
-
-.result img.active {
   animation: box-appear 2s ease forwards;
 }
 
@@ -364,8 +363,28 @@ h3 {
   font-weight: 700;
 }
 
+.confetti {
+  display: none;
+}
+
+.highscore {
+  max-width: 3.5rem;
+  height: auto;
+}
+
 @media screen and (min-width: 750px) {
   .test {
     width: 60%;
+  }
+
+  @keyframes box-appear {
+    from {
+      box-shadow: none;
+    }
+    to {
+      box-shadow:
+        0 0 0 14px hsla(140, 63%, 57%, 0.212),
+        0 0 0 28px hsla(140, 63%, 57%, 0.13);
+    }
   }
 }

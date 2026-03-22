@@ -21,6 +21,8 @@ const accuracyResult = document.getElementById("accuracy-result");
 let best = 0;
 const base = document.querySelector(".base");
 const bestScore = document.getElementById("best-score");
+const messageTitle = base.querySelector("h3");
+const message = base.querySelector("p");
 
 window.addEventListener("keydown", function (e) {
   if (e.key === " ") {
@@ -196,12 +198,34 @@ document.addEventListener("keyup", (e) => {
     accuracyResult.innerText = saveAccuracy;
     restart.style.background = "white";
     restart.style.color = "hsl(0, 0%, 7%)";
+    base.classList.remove("hidden");
+
+    if (saveWpm <= best) {
+      document.querySelector(".highscore").classList.add("hidden");
+
+      messageTitle.innerText = "Test Complete!";
+      message.innerText = "Solid run. Keep pushing to beat your high score.";
+    }
 
     if (best === 0) {
       best = saveWpm;
-      base.classList.remove("hidden");
-      document.querySelector(".base-img").classList.add("active");
+
+      document.querySelector(".highscore").classList.add("hidden");
+      messageTitle.innerText = "Baseline Established!";
+      message.innerText =
+        "You've set the bar. Now the real challenge begins—time to beat it.";
+
       bestScore.innerText = best;
+    }
+
+    if (saveWpm > best) {
+      best = saveWpm;
+      document.querySelector(".base-img").classList.remove("hidden");
+      bestScore.innerText = best;
+      document.querySelector(".base-img").classList.add("hidden");
+      document.querySelector(".highscore").classList.remove("hidden");
+      messageTitle.innerText = "High Score Smashed!";
+      message.innerText = "You're getting faster. That was incredible typing.";
     }
 
     return;
@@ -219,7 +243,8 @@ restart.addEventListener("mousedown", (e) => {
   e.preventDefault();
   testStart = true;
   timePassed = 0;
-
+  restart.style.color = "white";
+  restart.style.background = "hsl(0, 0%, 7%)";
   if (currentIndex >= span.length - 1) {
     result.classList.add("hidden");
   }
