@@ -88,7 +88,6 @@ main {
   background: hsl(0, 0%, 7%);
   inset: 0;
   z-index: 100;
-  margin-block-end: 1em;
 }
 
 .stats-container div {
@@ -123,6 +122,31 @@ main {
   width: 100%;
   justify-content: center;
   gap: 1em;
+}
+
+.option-container-desktop {
+  display: none;
+}
+
+.option-container-desktop button {
+  background: none;
+  border: 1px solid;
+  padding: 0.1em;
+  border-radius: 0.4em;
+}
+
+.difficulty-wrapper,
+.mode-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.difficulty-wrapper div {
+  display: flex;
+}
+
+.mode-wrapper div {
+  display: flex;
 }
 
 select {
@@ -244,7 +268,6 @@ main {
 }
 
 #text {
-  display: flex;
   display: flex;
   flex-wrap: wrap;
   word-break: normal;
@@ -401,6 +424,28 @@ h3 {
 }
 
 @media screen and (min-width: 750px) {
+  .option-container {
+    display: none;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .stats-container div {
+    flex-direction: row;
+    gap: 0.4em;
+  }
+
+  .stats-container {
+    align-items: center;
+  }
+  .option-container-desktop {
+    display: flex;
+  }
+
   .test {
     width: 70%;
   }

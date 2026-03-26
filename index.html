@@ -71,36 +71,56 @@
       </div>
 
       <div class="test">
-        <div class="stats-container">
-          <div class="wpm-wrapper">
-            <span>WPM:</span>
-            <span id="wpm">0</span>
-          </div>
-          <div class="gap"></div>
-          <div class="accuracy-wrapper">
-            <span>Accuracy:</span>
+        <nav>
+          <div class="stats-container">
+            <div class="wpm-wrapper">
+              <span>WPM:</span>
+              <span id="wpm">0</span>
+            </div>
+            <div class="gap"></div>
+            <div class="accuracy-wrapper">
+              <span>Accuracy:</span>
 
-            <span id="accuracy">100%</span>
+              <span id="accuracy">100%</span>
+            </div>
+            <div class="gap"></div>
+            <div class="time-wrapper">
+              <span>Time:</span>
+              <span id="time">0:00</span>
+            </div>
           </div>
-          <div class="gap"></div>
-          <div class="time-wrapper">
-            <span>Time:</span>
-            <span id="time">0:00</span>
+
+          <div class="option-container">
+            <select title="difficulty" id="difficulty">
+              <option value="easy"><span></span>Easy</option>
+              <option value="medium"><span></span>Medium</option>
+              <option value="hard"><span></span>Hard</option>
+            </select>
+
+            <select title="format" id="format">
+              <option value="60s"><span></span>Timed(60)</option>
+              <option value="passage"><span></span>Passage</option>
+            </select>
           </div>
-        </div>
 
-        <div class="option-container">
-          <select title="difficulty" id="difficulty">
-            <option value="easy"><span></span>Easy</option>
-            <option value="medium"><span></span>Medium</option>
-            <option value="hard"><span></span>Hard</option>
-          </select>
-
-          <select title="format" id="format">
-            <option value="60s"><span></span>Timed(60)</option>
-            <option value="passage"><span></span>Passage</option>
-          </select>
-        </div>
+          <div class="option-container-desktop">
+            <div class="difficulty-wrapper">
+              <span>Difficulty: </span>
+              <div>
+                <button>Easy</button>
+                <button>Meduim</button>
+                <button>Hard</button>
+              </div>
+            </div>
+            <div class="mode-wrapper">
+              <span>Mode: </span>
+              <div>
+                <button>Timed(60s)</button>
+                <button>Passage</button>
+              </div>
+            </div>
+          </div>
+        </nav>
         <main>
           <div class="overlay">
             <button id="start">start typing test</button>
