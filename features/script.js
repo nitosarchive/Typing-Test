@@ -80,6 +80,9 @@ function getDifficulty(e) {
 }
 
 document.getElementById("difficulty").addEventListener("change", getDifficulty);
+document
+  .querySelector(".difficulty-wrapper")
+  .addEventListener("click", getDifficulty);
 
 let timePassed = 0;
 
@@ -139,6 +142,7 @@ let incorrect = 0;
 function takeTest() {
   restart.classList.remove("hidden");
   getWpm();
+
   if (format.value === "60s") {
     timeMode();
   } else passage();
