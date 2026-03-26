@@ -82,7 +82,6 @@ main {
   display: flex;
   justify-content: space-between;
   width: 100%;
-
   font-size: 1.2rem;
   position: sticky;
   background: hsl(0, 0%, 7%);
@@ -90,10 +89,13 @@ main {
   z-index: 100;
 }
 
-.stats-container div {
+.wpm-wrapper,
+.accuracy-wrapper,
+.time-wrapper {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   margin: 0 auto;
   font-weight: 700;
 }
@@ -110,7 +112,8 @@ main {
 .gap {
   height: auto;
   width: 1px;
-  background: hsl(240, 3%, 46%);
+
+  background-color: hsl(240, 3%, 46%);
 }
 
 .head span:first-child {
@@ -423,7 +426,7 @@ h3 {
   height: auto;
 }
 
-@media screen and (min-width: 750px) {
+@media screen and (min-width: 900px) {
   .option-container {
     display: none;
   }
@@ -431,17 +434,23 @@ h3 {
   nav {
     display: flex;
     align-items: center;
+
     justify-content: space-between;
   }
 
-  .stats-container div {
+  .wpm-wrapper,
+  .accuracy-wrapper,
+  .time-wrapper {
     flex-direction: row;
     gap: 0.4em;
+    margin: 0;
   }
 
   .stats-container {
-    align-items: center;
+    justify-content: start;
+    gap: 1em;
   }
+
   .option-container-desktop {
     display: flex;
   }
