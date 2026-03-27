@@ -78,6 +78,10 @@ main {
   margin-block-end: 2em;
 }
 
+.head button {
+  background: none;
+}
+
 .logo-desktop {
   display: none;
 }

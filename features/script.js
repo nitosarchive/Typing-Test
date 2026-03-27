@@ -88,6 +88,7 @@ document.getElementById("difficulty").addEventListener("change", getDifficulty);
 format.addEventListener("change", () => {
   formatValue = format.value;
 });
+
 difficultyWrapper.addEventListener("click", (e) => {
   getDifficulty(e);
 });
@@ -99,7 +100,6 @@ difficultyBtn.forEach((btn) => {
     });
 
     btn.classList.add("active");
-    formatValue = btn.value;
   });
 });
 
@@ -109,6 +109,8 @@ modeBtn.forEach((btn) => {
       selected.classList.remove("active");
     });
     btn.classList.add("active");
+
+    formatValue = btn.value;
   });
 });
 
@@ -171,7 +173,14 @@ function takeTest() {
   restart.classList.remove("hidden");
   getWpm();
 
-  if (format === "60s") {
+  document
+    .querySelector(".option-container-desktop")
+    .querySelectorAll("button")
+    .forEach((btn) => {
+      btn.disabled = true;
+    });
+
+  if (formatValue === "60s") {
     timeMode();
   } else passage();
 
@@ -296,7 +305,7 @@ restart.addEventListener("mousedown", (e) => {
   }
   test.classList.remove("hidden");
 
-  if (format.value || selectedMode.value === "60s") {
+  if (formatValue === "60s") {
     incrementedTime = 60;
     timeMode();
 
