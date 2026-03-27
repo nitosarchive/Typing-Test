@@ -438,7 +438,7 @@ h3 {
   nav {
     display: flex;
     align-items: center;
-    font-size: clamp(0.7rem, 0.057rem + 1.143vi, 1.2rem);
+    font-size: clamp(0.65rem, 0.067rem + 1.037vw, 1rem);
     max-width: 100%;
     justify-content: space-between;
   }
@@ -459,8 +459,26 @@ h3 {
     gap: 1em;
   }
 
+  .difficulty-wrapper,
+  .mode-wrapper {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .difficulty-wrapper div,
+  .mode-wrapper div {
+    display: flex;
+    gap: 0.4em;
+  }
+
+  .difficulty-wrapper span,
+  .mode-wrapper span {
+    color: hsl(240, 3%, 46%);
+  }
+
   .option-container-desktop {
     display: flex;
+    gap: 1em;
   }
 
   .test {
