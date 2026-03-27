@@ -68,7 +68,7 @@ main {
 
 .score span:first-of-type {
   color: hsl(240, 3%, 46%);
-  margin-inline-start: 0.5em;
+  margin-inline: 0.5em;
 }
 
 .head {
@@ -80,6 +80,7 @@ main {
 
 .head button {
   background: none;
+  cursor: pointer;
 }
 
 .logo-desktop {
