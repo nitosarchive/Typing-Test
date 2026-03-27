@@ -43,6 +43,10 @@ body {
   min-height: 100vh;
 }
 
+nav {
+  font-size: 1.2rem;
+}
+
 main {
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
@@ -82,7 +86,7 @@ main {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  font-size: 1.2rem;
+  margin-block-end: 1em;
   position: sticky;
   background: hsl(0, 0%, 7%);
   inset: 0;
@@ -434,7 +438,8 @@ h3 {
   nav {
     display: flex;
     align-items: center;
-
+    font-size: clamp(0.7rem, 0.057rem + 1.143vi, 1.2rem);
+    max-width: 100%;
     justify-content: space-between;
   }
 
@@ -448,6 +453,9 @@ h3 {
 
   .stats-container {
     justify-content: start;
+    position: static;
+    background: none;
+    margin-block-end: 0em;
     gap: 1em;
   }
 
