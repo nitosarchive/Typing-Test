@@ -23,6 +23,11 @@ const base = document.querySelector(".base");
 const bestScore = document.getElementById("best-score");
 const messageTitle = base.querySelector("h3");
 const message = base.querySelector("p");
+const difficultyWrapper = document.querySelector(".difficulty-wrapper");
+const modeWrapper = document.querySelector(".mode-wrapper");
+const modeBtn = modeWrapper.querySelectorAll("button");
+const difficultyBtn = difficultyWrapper.querySelectorAll("button");
+let formatValue;
 
 if (best != null) {
   bestScore.innerText = best + " WPM";
@@ -80,11 +85,9 @@ function getDifficulty(e) {
 }
 
 document.getElementById("difficulty").addEventListener("change", getDifficulty);
-const difficultyWrapper = document.querySelector(".difficulty-wrapper");
-const modeWrapper = document.querySelector(".mode-wrapper");
-const modeBtn = modeWrapper.querySelectorAll("button");
-
-const difficultyBtn = difficultyWrapper.querySelectorAll("button");
+format.addEventListener("change", () => {
+  formatValue = format.value;
+});
 difficultyWrapper.addEventListener("click", (e) => {
   getDifficulty(e);
 });
@@ -94,7 +97,9 @@ difficultyBtn.forEach((btn) => {
     difficultyBtn.forEach((selected) => {
       selected.classList.remove("active");
     });
+
     btn.classList.add("active");
+    formatValue = btn.value;
   });
 });
 
@@ -166,7 +171,7 @@ function takeTest() {
   restart.classList.remove("hidden");
   getWpm();
 
-  if (format.value === "60s") {
+  if (format === "60s") {
     timeMode();
   } else passage();
 
@@ -291,7 +296,7 @@ restart.addEventListener("mousedown", (e) => {
   }
   test.classList.remove("hidden");
 
-  if (format.value === "60s") {
+  if (format.value || selectedMode.value === "60s") {
     incrementedTime = 60;
     timeMode();
 
