@@ -481,6 +481,11 @@ h3 {
     gap: 1em;
   }
 
+  button.active {
+    border-color: hsl(210, 100%, 65%);
+    color: hsl(210, 100%, 65%);
+  }
+
   .test {
     width: 70%;
   }

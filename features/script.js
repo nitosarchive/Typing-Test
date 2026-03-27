@@ -80,9 +80,32 @@ function getDifficulty(e) {
 }
 
 document.getElementById("difficulty").addEventListener("change", getDifficulty);
-document
-  .querySelector(".difficulty-wrapper")
-  .addEventListener("click", getDifficulty);
+const difficultyWrapper = document.querySelector(".difficulty-wrapper");
+const modeWrapper = document.querySelector(".mode-wrapper");
+const modeBtn = modeWrapper.querySelectorAll("button");
+
+const difficultyBtn = difficultyWrapper.querySelectorAll("button");
+difficultyWrapper.addEventListener("click", (e) => {
+  getDifficulty(e);
+});
+
+difficultyBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    difficultyBtn.forEach((selected) => {
+      selected.classList.remove("active");
+    });
+    btn.classList.add("active");
+  });
+});
+
+modeBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    modeBtn.forEach((selected) => {
+      selected.classList.remove("active");
+    });
+    btn.classList.add("active");
+  });
+});
 
 let timePassed = 0;
 
