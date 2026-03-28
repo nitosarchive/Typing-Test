@@ -170,6 +170,7 @@ let currentIndex = 0;
 let incorrect = 0;
 
 function takeTest() {
+  if (testStart === true) return;
   restart.classList.remove("hidden");
   getWpm();
 
