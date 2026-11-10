@@ -239,9 +239,21 @@ const ignore = [
   "Tab",
 ];
 
-document.addEventListener("keyup", (e) => {
-  if (ignore.includes(e.key)) return;
+function restartKeybind() {
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") restartTest();
+    if (e.shiftKey) {
+      if (e.key === "Alt") restartTest();
+    }
+  });
+}
+
+document.addEventListener("keydown", (e) => {
   input.focus();
+
+  restartKeybind();
+  if (ignore.includes(e.key)) return;
+
   let endWpm = timePassed;
 
   currentWord = document.querySelector(`[data-word-index ="${currentIndex}"]`);
@@ -403,6 +415,7 @@ let saveAccuracy;
 
 function takeTest() {
   if (testStart === true) return;
+  textBox.addEventListener("click", input.focus());
   restart.classList.remove("hidden");
   getWpm();
   input.focus();
@@ -424,18 +437,10 @@ function takeTest() {
   testStart = true;
   textBox.classList.remove("not-started");
   document.querySelector(".overlay").classList.add("hidden");
-
-  textBox.addEventListener("keydown", (e) => {
-    if (e.key === "Tab") restartTest();
-    if (e.shiftKey) {
-      if (e.key === "Alt") restartTest();
-    }
-  });
 }
 
 start.addEventListener("click", takeTest);
 textBox.addEventListener("click", takeTest);
-textBox.addEventListener("click", input.focus());
 
 function restartTest() {
   testStart = true;
