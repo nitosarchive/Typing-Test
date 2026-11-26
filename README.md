@@ -30,4 +30,4 @@
 
 ### End
 - I know there is a lot to improve on and I'd love help getting advice on what to improve on. I'll make improvements to the site as my skills get better. It will serve as a great reflector of how far I've come.
-- Check out the site at https://nitosarchive.github.io/Typing-Test/ if you haven't already and give it a go!
+- Check out the site at [https://nitosarchive.github.io/Typing-Test/](https://nitotype.netlify.app) if you haven't already and give it a go!
